@@ -22,7 +22,7 @@ Cílem projektu
 * [Lab4: Verification and polish](#lab4)
 * [Lab5: Demonstration and defense](#lab5)
 * [Zdrojové soubory](#zdrojové-soubory)
-* [Využití prostředků (Resource Utilization)](#resource-utilization-report-report)
+
   
 ## Lab1: Proposal and architecture
 ### Blokové schéma
