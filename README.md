@@ -3,11 +3,11 @@
 Cílem projektu 
 
 ### Členové týmu
-  #### Jakub Dibelka
+  ##### Jakub Dibelka
   * finální dokumentace projektu, video
-  #### Martin Doucha
+  ##### Martin Doucha
   * ladění a pomoc tvorby programu 
-  #### Matěj Jurka
+  ##### Matěj Jurka
   * tvorba programu, ladění 
 
 ### Základní funkce
