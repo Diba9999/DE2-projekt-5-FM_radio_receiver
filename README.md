@@ -34,8 +34,8 @@ Během této hodiny jsme si přibližně rozdělili úlohy, seznámily se s modu
 - boční periferie (tlačítko/joystick)
 
 ### Blokové schéma
-Návrh blokového schématu pro naší aplikaci
 
+![Screenshot of a block desing](img/DE2_navrh_v1.png)
 
 ## Lab2: Device modules
 ### testování senzorů
