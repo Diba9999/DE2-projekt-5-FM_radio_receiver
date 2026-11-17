@@ -44,7 +44,7 @@ V rámci prvního cvičení jsme rozdělili role v týmu, seznámili se s dostup
 > [!NOTE]
 > Níže uvedené blokové schéma je pracovní verze a zatím neobsahuje přiřazení GPIO pinů ani napájecí větve.
 
-![Block diagram of the FM receiver](img/DE2_navrh_v1.png)
+![Block diagram of the FM receiver](img/DE2_navrh_v2.png)
 
 
 
