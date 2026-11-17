@@ -1,42 +1,61 @@
-# FM Radio receiver realizovaný na mikrokontroléru Raspberry Pico
-## Cíl projektu
-Cílem projektu je realizovat FM enkodéru, který bude na displeji zobrazovat vybranou frekvenci a její parametry. Výstup z enkodéru bude poté přehráván  
+# FM Radio receiver with digital tuning 
+![Platform](https://img.shields.io/badge/Platform-Raspberry%20Pi%20Pico-C51A4A?logo=raspberrypi&logoColor=white)
+![Language](https://img.shields.io/badge/Language-MicroPython-3776AB?logo=micropython)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+Projekt digitálně laděného FM přijímače založeného na mikrokontroléru **Raspberry Pi Pico** a rádiovém modulu **Si4703**. Zařízení umožňuje ladění stanic pomocí rotačního enkodéru, ukládání předvoleb a zobrazování provozních parametrů i RDS informací na grafickém displeji.
 
-### Členové týmu
-- **Jakub Dibelka** - finální dokumentace projektu, video 
-- **Martin Doucha** - ladění a pomoc tvorby programu
-- **Matěj Jurka** - tvorba programu, ladění 
+### Týmové rozdělení
+
+| Člen týmu | Role a hlavní zaměření |
+| :--- | :--- |
+| **Jakub Dibelka** | Finální dokumentace projektu, demo video, ladění |
+| **Martin Doucha** | Ladění programu v MicroPythonu, testování periferií |
+| **Matěj Jurka** | Architektura a vývoj hlavního programu v MicroPythonu, ladění |
+
 
 ### Základní funkce
-* **Příjmání signálu:** Přijímá signál který enkóduje
-* **Přehrávání zvuku:** Přehrávání příjmaného signálu ve sluchátcích / reproduktoru
-* **Změna frekvence:** Výběr FM frekvence pomocí rotačního enkodéru
-* **Ovládání stanice:** pomocí periferií ovládat hlasitost a výběr oblíbené stanice 
-* **Zobrazení údajů:** Zobrazení vybrané frekvence, nastavená hlasitost, RSSI, vybrané informace RDS
+- **Příjem a demodulace FM** (Si4703) s výstupem do sluchátek nebo reproduktoru.
+- **Digitální ladění** (xx – xxx MHz) pomocí rotačního enkodéru.
+- **Ovládání hlasitosti a předvoleb** pomocí tlačítek či joysticku.
+- **Zobrazení údajů na LCD:** frekvence, hlasitost, síla signálu (**RSSI**) a **RDS** (název stanice, RadioText).
 
-### Obsah
-* [Cíl projektu](#cíl-projektu)
+## Obsah
 * [Lab1: Proposal and architecture](#lab1-proposal-and-architecture)
 * [Lab2: Device modules](#lab2-device-modules)
 
 
+
 ## Lab1: Proposal and architecture
 
-Během této hodiny jsme si přibližně rozdělili úlohy, seznámily se s moduly a navrhnuly základní podobu stanice FM radia.
+V rámci prvního cvičení jsme rozdělili role v týmu, seznámili se s dostupnými hardwarovými moduly a navrhli základní blokovou architekturu celého systému.
 
-### Využité moduly
-- Raspberry pi Pico
-- FM receiver modul Si4703
-- Rotační enkodér 
-- Potenciometr B10K
-- LCD displej Nokia 5110
-- boční periferie (tlačítko/joystick)
+### Použitý hardware
+| Modul / součástka | Rozhraní | Účel v projektu |
+| :--- | :---: | :--- |
+| **Raspberry Pi Pico** | — | Hlavní řídicí mikrokontrolér (RP2040, MicroPython) |
+| **Si4703 FM Tuner** | `I2C` | Příjem FM vysílání, demodulace audia a čtení RDS/RSSI |
+| **LCD Nokia 5110 (PCD8544)** | `SPI` | Grafické zobrazení frekvence, hlasitosti, RSSI a RDS |
+| **Rotační enkodér** | `GPIO` | Plynulé ladění frekvence a pohyb v menu |
+| **Potenciometr B10K** | `ADC` / analog | Regulace hlasitosti (nebo nastavení kontrastu / vstupu) |
+| **Tlačítka / Joystick** | `GPIO` | Výběr oblíbených stanic a potvrzování voleb |
 
 ### Blokové schéma
+> [!NOTE]
+> Níže uvedené blokové schéma je pracovní verze a zatím neobsahuje přiřazení GPIO pinů ani napájecí větve.
 
-![Screenshot of a block desing](img/DE2_navrh_v1.png)
+![Block diagram of the FM receiver](img/DE2_navrh_v1.png)
+
+
+
 
 ## Lab2: Device modules
-### testování senzorů
-Návrh zapojení součástek pro testování + program potřebný pro zprovoznění
+Ověření funkčnost jednotlivých periferií samostatně před jejich spojením do finální aplikace.
+
+### Testování senzorů a periferií
+- [ ] **Si4703:** Inicializace, naladění testovací stanice, vyčtení RSSI a RDS.
+- [ ] **Nokia 5110 LCD:** Vykreslení základního textu a ukazatele síly signálu přes SPI.
+- [ ] **Rotační enkodér a tlačítka:** Ošetření zákmitů (debouncing) a čtení směru otáčení.
+
+### Tabulka zapojení (Pinout)
+
