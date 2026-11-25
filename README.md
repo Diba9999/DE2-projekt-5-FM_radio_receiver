@@ -51,11 +51,10 @@ V rámci prvního cvičení jsme rozdělili role v týmu, seznámili se s dostup
 ## Lab2: Device modules
 Ověření funkčnost jednotlivých periferií samostatně před jejich spojením do finální aplikace.
 
-### Tabulka zapojení (Pinout)
+### Schéma a tabulka zapojení (Pinout)
 
 Všechny připojené moduly jsou napájeny z větve **3,3 V** a mají společnou zem **GND**.
-> [!NOTE]
-> Dodat schéma zapojení.
+
 ![Connection of modules](img/DE2_zapojení_v1.png)
 
 | Modul | Pin modulu | Pin na Pico W | Fyzický pin | Poznámka / konfigurace |
@@ -125,7 +124,7 @@ fm-radio-pico/
 Sloučení samostatně otestovaných modulů do jednoho hlavního programu (`main.py`) a ověření jejich společné komunikace v reálném provozu.
 
 ### Integrace periferií do hlavního programu
-- [ ] **Sdílená I2C sběrnice:** Korektní sekvence inicializace (reset Si4703 před spuštěním OLED SH1106 na `GP4`/`GP5`).
+- [ ] **Sdílená I2C sběrnice:** Správné nastavení (reset Si4703 před spuštěním OLED SH1106 na `GP4`/`GP5`).
 - [ ] **Ladění a ovládání:** Propojení rotačního enkodéru s přelaďováním Si4703 a přepínáním kroku (`0,1` / `1,0 MHz`).
 - [ ] **Řízení hlasitosti:** Periodické čtení potenciometru (`GP26`) a aktualizace hlasitosti tuneru bez blokování smyčky.
 - [ ] **Uživatelské rozhraní:** Vykreslování aktuální frekvence, kroku, hlasitosti, RSSI a RDS na OLED displeji.
