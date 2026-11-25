@@ -55,7 +55,10 @@ Ověření funkčnost jednotlivých periferií samostatně před jejich spojení
 
 Všechny připojené moduly jsou napájeny z větve **3,3 V** a mají společnou zem **GND**.
 
-![Connection of modules](img/DE2_zapojení_v1.png)
+> [!NOTE]
+> Doplnit názvy pinu i v schématu
+
+![Connection of modules](img/DE2_zapojení_v1.1.png)
 
 | Modul | Pin modulu | Pin na Pico W | Fyzický pin | Poznámka / konfigurace |
 | :--- | :---: | :---: | :---: | :--- |
