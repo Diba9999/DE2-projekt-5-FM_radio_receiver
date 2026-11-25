@@ -98,7 +98,7 @@ def update_display(oled, freq, step_size, volume, rds_station="", rds_song="", s
     # 1. a 2. řádek: Zobrazení olvádaných parametrů (frekvence, krok, hlasitost)
     oled.fill_rect(0, 0, 128, 21, 1)
     oled.text(f"F: {freq:.1f} MHz", 2, 2, 0)
-    oled.text(f"K:{step_size:.1f} | H:{volume:2d}", 2, 12, 0)
+    oled.text(f"K:{step_size:.1f} | H:{volume:.0f}", 2, 12, 0)
 
     # 3. řádek: Název stanice
     station = (rds_station.strip() or "---")[:16]
