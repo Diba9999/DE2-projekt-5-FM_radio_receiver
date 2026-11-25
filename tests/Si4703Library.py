@@ -142,3 +142,31 @@ class Si4703:
         if time.ticks_diff(end_time, time.ticks_ms()) <= 0:
             return ""
         return "".join(buffer).strip()
+
+#  TESTOVÁNÍ
+
+from machine import Pin, I2C
+
+SDA_PIN = 4
+SCL_PIN = 5
+RST_PIN = 15
+
+# Reset sekvence pro prepnuti Si4703 do I2C rezimu
+rst = Pin(RST_PIN, Pin.OUT, value=0)
+sda = Pin(SDA_PIN, Pin.OUT, value=0)
+time.sleep_ms(10)
+rst.value(1)
+time.sleep_ms(10)
+
+i2c = I2C(0, scl=Pin(SCL_PIN), sda=Pin(SDA_PIN), freq=100000)
+print("I2C:", [hex(a) for a in i2c.scan()])
+
+radio = Si4703(i2c, rst)
+radio.set_volume(5)
+radio.set_channel(951)  # 95.1 MHz
+
+while True:
+    aktualni = radio.get_channel() / 10
+    rds = radio.read_rds(2000)
+    print(f"Frekvence: {aktualni:.1f} MHz | RDS: {rds if rds else '---'}")
+    time.sleep(1)
