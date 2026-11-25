@@ -97,3 +97,24 @@ def update_display(oled, freq, step_size):
     oled.text(f"Freq: {freq:.1f} MHz", 0, 10)
     oled.text(f"Krok: {step_size:.1f} MHz", 0, 30)
     oled.show()
+
+# Tstování
+
+from machine import Pin, I2C
+
+i2c = I2C(0, scl=Pin(5), sda=Pin(4), freq=400000)
+print("I2C:", [hex(a) for a in i2c.scan()])
+
+oled = SH1106_I2C(i2c)
+freq = 95.0
+
+while True:
+    oled.fill(0)
+    oled.show_logo()
+    time.sleep(2)
+
+    update_display(oled, freq, 0.1)
+    freq = round(freq + 0.1, 1)
+    if freq > 108.0:
+        freq = 87.5
+    time.sleep(2)
